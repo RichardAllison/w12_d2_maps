@@ -11,13 +11,13 @@ MapWrapper.prototype.addMarker = function (coords) {
     map: this.googleMap
   });
   const infowindow = new google.maps.InfoWindow({
-    content: 'content'
+    content: 'Latitude: ' + coords.lat +
+    '<br>Longitude: ' + coords.lng
   });
   marker.addListener('click', function() {
     infowindow.open(this.googleMap, marker);
   });
 };
-
 
 MapWrapper.prototype.addClickEvent = function () {
   google.maps.event.addListener(this.googleMap, 'click', function (event) {
