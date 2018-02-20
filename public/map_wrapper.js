@@ -5,14 +5,15 @@ const MapWrapper = function (container, coords, zoom) {
   });
 };
 
-MapWrapper.prototype.addMarker = function (coords) {
+MapWrapper.prototype.addMarker = function (coords, content) {
   const marker = new google.maps.Marker({
     position: coords,
     map: this.googleMap
   });
+
+  if (!content) content = `Latitude:  ${coords.lat} <br>Longitude: ${coords.lng}`;
   const infowindow = new google.maps.InfoWindow({
-    content: 'Latitude: ' + coords.lat +
-    '<br>Longitude: ' + coords.lng
+    content: content
   });
   marker.addListener('click', function() {
     infowindow.open(this.googleMap, marker);
