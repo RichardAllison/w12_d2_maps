@@ -1,8 +1,8 @@
 const handleButtonClick = function () {
-  console.log(this);
-  this.googleMap.setCenter({lat:41.836944, lng:-87.684722});
+  const center = {lat:41.88603285104684, lng:-87.62118101119995}
+  this.googleMap.setCenter(center);
   const ChicagoInfo = "<b>Chicago</b><br>Chicago, on Lake Michigan in Illinois, is among the largest cities in the U.S. Famed for its bold architecture, it has a skyline punctuated by skyscrapers such as the iconic John Hancock Center, 1,451-ft. Willis Tower (formerly the Sears Tower) and the neo-Gothic Tribune Tower. The city is also renowned for its museums, including the Art Institute of Chicago with its noted Impressionist and Post-Impressionist works."
-  this.addMarker({lat: 41.836944, lng: -87.684722}, ChicagoInfo);
+  this.addMarker(center, ChicagoInfo);
 }
 
 const initialize = function () {
@@ -20,6 +20,9 @@ const initialize = function () {
 
   const button = document.querySelector('#Chicago-button');
   button.addEventListener('click', handleButtonClick.bind(mainMap));
+
+  const bounceButton = document.querySelector('#button-bounce-markers')
+  bounceButton.addEventListener('click', mainMap.bounceMarkers.bind(mainMap))
 }
 
 
