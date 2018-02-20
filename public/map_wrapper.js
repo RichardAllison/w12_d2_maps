@@ -10,7 +10,14 @@ MapWrapper.prototype.addMarker = function (coords) {
     position: coords,
     map: this.googleMap
   });
+  const infowindow = new google.maps.InfoWindow({
+    content: 'content'
+  });
+  marker.addListener('click', function() {
+    infowindow.open(this.googleMap, marker);
+  });
 };
+
 
 MapWrapper.prototype.addClickEvent = function () {
   google.maps.event.addListener(this.googleMap, 'click', function (event) {
